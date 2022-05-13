@@ -10,3 +10,8 @@
 - It's Fucking Fast 🚀
 - Minimal (*only requires **bash** and coreutils*)
 - Random awesome colorschemes 
+## Why?
+
+  
+People were using python I wanted something minimal.\
+Why `bash`? It's fun. ¯\\\_(ツ)_/¯
