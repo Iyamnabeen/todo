@@ -16,7 +16,7 @@ mkdir -p ~/.local/todo
 # Initial selection steps
 ##########################
 while true;do
-    echo -e "\e[$((($RANDOM) % 7 + 30))m "Please Make a Selection options: A/a=add, V/v=view, E/e=exit"\e[0m"
+    echo -e "\e[$((($RANDOM) % 7 + 30))m "Please Make a Selection options: '(A/a=add, V/v=view, E/e=exit)'"\e[0m"
     printf " : "
     read -r answer
 
@@ -26,6 +26,7 @@ then
     echo -e "\e[$((($RANDOM) % 7 + 30))m "Date format = Dec12"\e[0m"
     printf "\n : "
     read -r date
+    [ -z "$date" ] && date="Dec12"
     printf "\n"
     echo -e "\e[$((($RANDOM) % 7 + 30))m "Time format = HH:MM AM/PM"\e[0m"
     printf "\n : "
@@ -45,7 +46,7 @@ fi
 elif [[ "$answer" == [V/v] ]]
 then
     printf "\n"
-    printf "Please type \"date\" or \"all\" to choose from list"
+    echo -e  "\e[$((($RANDOM) %7 +30))m "Please type \"date\" or \"all\" to choose from list"\e[m"
     printf "\n : "
     read -r choice
     printf "\n"
@@ -64,6 +65,7 @@ then
     fi
 elif [[ "$answer" == [E/e] ]]
 then
+  vim "$HOME/.local/todo/$day"
     exit
 else [[ "$answer" == ? ]]
     
