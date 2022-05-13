@@ -15,3 +15,20 @@
   
 People were using python I wanted something minimal.\
 Why `bash`? It's fun. ¯\\\_(ツ)_/¯
+  
+## Installation
+
+### cURL
+cURL **todo** to your **$PATH** and give execute permissions , create respective directory for the list!.
+
+```sh
+$ sudo curl -sL "https://raw.githubusercontent.com/Iyamnabeen/todo/main/todo" -o $HOME/.local/bin/todo
+$ sudo chmod +x $HOME/.local/bin/todo
+ 
+```
+
+### Make
+```sh
+$ git clone https://github.com/iyamnabeen/todo.git && cd todo/
+$ sudo make install
+```
