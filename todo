@@ -1,0 +1,85 @@
+#!/bin/bash
+
+###########
+#Ouuuuuuu
+###########
+DAY=$(date --date="2 days" | awk '{ print $2 $3 }')
+BODY=$(less "$HOME/.local/todo/$DAY")
+FILE="$HOME/.local/todo/$DAY"
+time="$(date "+%H:%M:%S")"
+###################
+# Directory check
+##################
+mkdir -p ~/.local/todo
+
+##########################
+# Initial selection steps
+##########################
+while true;do
+    echo -e "\e[$((($RANDOM) % 7 + 30))m "Please Make a Selection options: A/a=add, V/v=view, E/e=exit"\e[0m"
+    printf " : "
+    read -r answer
+
+if [[ "$answer" == [A/a/b] ]]
+then
+    printf "\n"
+    echo -e "\e[$((($RANDOM) % 7 + 30))m "Date format = Dec12"\e[0m"
+    printf "\n : "
+    read -r date
+    printf "\n"
+    echo -e "\e[$((($RANDOM) % 7 + 30))m "Time format = HH:MM AM/PM"\e[0m"
+    printf "\n : "
+    read -r time
+    printf "\n"
+    echo -e "\e[$((($RANDOM) % 7 + 30))m "Your Entry"\e[0m"
+    printf "\n : "
+    read -r entry
+if [[ -f "$HOME/.local/todo/$date" ]]; then
+    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/todo/$date"
+    vim "$HOME/.local/todo/$date"
+else
+    touch "$HOME/.local/todo/$date"
+    printf '%s %s :\n %s\n\n' "$date" "$time" "$entry" >> "$HOME/.local/todo/$date"
+    vim "$HOME/.local/todo/$date"
+fi
+elif [[ "$answer" == [V/v] ]]
+then
+    printf "\n"
+    printf "Please type \"date\" or \"all\" to choose from list"
+    printf "\n : "
+    read -r choice
+    printf "\n"
+    if [[ "$choice" == all ]]
+    then
+        vim "$HOME/.local/todo/"
+    else
+        if [[ "$choice" == date ]]
+        then
+            echo -e "\e[$((($RANDOM) % 7 + 30))m "which date would you like to view?"\e[m"
+            printf "(format = Dec12)"
+            printf "\n : "
+            read -r day
+            vim "$HOME/.local/todo/$day"
+        fi
+    fi
+elif [[ "$answer" == [E/e] ]]
+then
+    exit
+else [[ "$answer" == ? ]]
+    
+    echo -e "\e[$((($RANDOM) % 7 + 30))m "Please make a proper selection"\e[0m"
+fi
+
+echo -e "\e[$((($RANDOM) % 7 + 30))m "Would you like to add new entry ot view previous one?"\e[0m"
+echo -e "\e[$((($RANDOM) % 7 + 30))m "'(Y/y or N/n)'"\e[0m"
+printf "\n: "
+read -r decision
+printf "\n"
+if [[ "$decision" == [Y/y] ]]
+then
+    echo -e "\e[$((($RANDOM) % 7 + 30))m "Great!"\e[0m" 
+else
+    exit
+fi
+
+done
