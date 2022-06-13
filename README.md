@@ -30,3 +30,7 @@ $ sudo chmod +x $HOME/.local/bin/todo
 $ git clone https://github.com/iyamnabeen/todo.git && cd todo/
 $ sudo make install
 ```
+
+ ##Tips
+ since makefile is not able to create a path in your local directory you need to create a ```[dot].local/bin``` directory & then place then run makefile,
+ Also set the path variable in your ```.zshrc``` or ```.bashrc``` by adding this line ```export PATH=$PATH:$HOME/.local/bin``` 
